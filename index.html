@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cabinet of Beetles — портфолио-проект</title>
+  <meta name="description" content="Атмосферный сайт-портфолио про жуков: поиск, фильтры, переключение тем, режим энтомолога и адаптивный интерфейс." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-theme="dark">
+  <div class="grain"></div>
+  <div class="bg-orbs" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+
+  <header class="hero shell">
+    <nav class="topbar">
+      <a class="brand" href="#top">
+        <span class="brand-mark">✶</span>
+        <span>
+          <strong>Cabinet of Beetles</strong>
+          <small>portfolio demo / frontend showcase</small>
+        </span>
+      </a>
+      <div class="topbar-actions">
+        <button id="themeToggle" class="ghost-button" type="button" aria-label="Переключить тему">
+          <span class="button-dot"></span>
+          <span class="theme-label">Gothic</span>
+        </button>
+      </div>
+    </nav>
+
+    <section class="hero-grid" id="top">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">портфолио-проект / статический сайт</p>
+        <h1>Цифровой кабинет жуков,<br>сделанный как витрина внимания к деталям</h1>
+        <p class="lead">
+          Демонстрационный проект, который продаёт не только любовь к визуалу, но и умение собирать
+          аккуратный интерфейс: поиск, фильтры, адаптив, анимации, переключение темы и режим энтомолога.
+        </p>
+        <div class="hero-actions">
+          <a href="#collection" class="primary-button">Открыть коллекцию</a>
+          <button id="randomBeetle" class="secondary-button" type="button">Случайный экземпляр</button>
+        </div>
+        <ul class="hero-points">
+          <li>поиск и мгновенная фильтрация</li>
+          <li>hover-эффекты и мягкая анимация карточек</li>
+          <li>светлая и готическая темы</li>
+          <li>адаптив под десктоп, планшет и телефон</li>
+        </ul>
+      </div>
+
+      <aside class="hero-panel reveal delay-1" aria-label="Панель статуса">
+        <div class="specimen-card">
+          <div class="specimen-head">
+            <span class="specimen-chip">digital collection</span>
+            <span class="specimen-chip subtle">CF ready</span>
+          </div>
+          <div class="specimen-art" aria-hidden="true">
+            <div class="beetle-sigil">
+              <span class="body"></span>
+              <span class="wing left"></span>
+              <span class="wing right"></span>
+              <span class="leg l1"></span>
+              <span class="leg l2"></span>
+              <span class="leg l3"></span>
+              <span class="leg r1"></span>
+              <span class="leg r2"></span>
+              <span class="leg r3"></span>
+            </div>
+          </div>
+          <div class="specimen-stats">
+            <div>
+              <strong id="totalCount">0</strong>
+              <span>карточек</span>
+            </div>
+            <div>
+              <strong>2</strong>
+              <span>темы</span>
+            </div>
+            <div>
+              <strong>live</strong>
+              <span>filtering</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </header>
+
+  <main>
+    <section class="controls shell reveal" id="collection">
+      <div class="section-heading">
+        <p class="eyebrow">коллекция</p>
+        <h2>Подборка любимых видов</h2>
+        <p>Можно искать по названию, фильтровать по региону и типу, а ещё включать латинские названия одним кликом.</p>
+      </div>
+
+      <div class="toolbar">
+        <label class="search-field">
+          <span>Поиск</span>
+          <input id="searchInput" type="search" placeholder="Например, скарабей или lucanus" autocomplete="off" />
+        </label>
+
+        <label>
+          <span>Регион</span>
+          <select id="regionFilter"></select>
+        </label>
+
+        <label>
+          <span>Тип</span>
+          <select id="typeFilter"></select>
+        </label>
+
+        <button id="latinToggle" class="toggle-card" type="button" aria-pressed="false">
+          <span class="toggle-title">Режим энтомолога</span>
+          <span class="toggle-text">Показывать латинские названия</span>
+        </button>
+      </div>
+
+      <div class="results-meta">
+        <p id="resultsText">Найдено 0 экземпляров</p>
+        <button id="resetFilters" class="text-button" type="button">Сбросить фильтры</button>
+      </div>
+
+      <div id="beetleGrid" class="beetle-grid" aria-live="polite"></div>
+      <div id="emptyState" class="empty-state hidden">
+        <h3>Ничего не найдено</h3>
+        <p>Попробуй изменить запрос или сбросить фильтры — коллекция снова откроется полностью.</p>
+      </div>
+    </section>
+
+    <section class="about shell reveal delay-2">
+      <div class="about-card">
+        <p class="eyebrow">что продаёт этот проект</p>
+        <h2>Фронтенд, вкус и забота о пользовательском опыте</h2>
+        <div class="about-grid">
+          <article>
+            <h3>Интерфейс</h3>
+            <p>Сетка карточек, фильтры, поиск, динамический вывод количества результатов и деликатные анимации без тяжёлого фреймворка.</p>
+          </article>
+          <article>
+            <h3>Дизайн</h3>
+            <p>Две разные атмосферы: светлая коллекционная и тёмная готическая. Это показывает гибкость в визуальной подаче одного и того же контента.</p>
+          </article>
+          <article>
+            <h3>Практика</h3>
+            <p>Проект подготовлен под GitHub + Cloudflare Pages/Workers: статический, быстрый, легко редактируется и расширяется без сложного бэкенда.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-card">
+      <button id="closeModal" class="close-button" type="button" aria-label="Закрыть окно">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <template id="beetleCardTemplate">
+    <article class="beetle-card reveal-card">
+      <button class="card-hit" type="button">
+        <div class="card-topline">
+          <span class="card-region"></span>
+          <span class="card-type"></span>
+        </div>
+        <div class="card-art">
+          <div class="mini-beetle">
+            <span class="body"></span>
+            <span class="wing left"></span>
+            <span class="wing right"></span>
+          </div>
+        </div>
+        <div class="card-copy">
+          <h3 class="card-name"></h3>
+          <p class="card-latin"></p>
+          <p class="card-note"></p>
+        </div>
+        <div class="card-footer">
+          <span class="tag habitat"></span>
+          <span class="tag rarity"></span>
+        </div>
+      </button>
+    </article>
+  </template>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
